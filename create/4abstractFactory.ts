@@ -6,8 +6,8 @@
    *  팩토리 메서드(객체를 생성하는 클래스의 선언/구현 분리)를 확장
    *  추상팩토리를 통해 여러 그룹군을 만들고 -> 그 그룹군마다 클래스를 생성
    *
-   * 팩토리 메서드 패턴은 개수를 떠나, 상위 클래스의 메서드를 통해 인스턴스를 생성했다면,
-   *  추상팩토리는 하위 클래스를 구현하고, 이 클래스를 통해 여러 객체를 생성!
+   * 팩토리 메서드 패턴은 상위 클래스의 메서드를 통해 하나의 인스턴스를 생성했다면, (상속받은 하위클래스 당 하나의 생성 메서드)
+   *  추상팩토리는 하위 클래스를 구현하고, 이 클래스를 통해 여러 객체를 생성! (상속받은 하위클래스가 여러 객체 생성 메서드를 가짐)
    *
    * 은닉성: 상위 클래스로부터 선언받은 메서드에 대해, 각 하위 클래스의 구현부를 외부로부터 숨김 (다른 형제 클래스도 모른다!)
    * 목적성: 해결할 목적을 위해, 하위 클래스가 추가 생성
@@ -21,6 +21,7 @@
   // 최상위 팩토리
   abstract class CarFactory {
     // 파라미터는 하위 클래스에 맡긴다 / 리턴값만 명시해 선언!
+    // 하나의 객체 안에 여러개의 생성 메서드가 담긴다.
     abstract createTire(...args: any[]): Tire;
     abstract createEngine(...args: any[]): { power: number; madeBy: string };
   }
@@ -67,6 +68,7 @@
   const koreaCarFacotry = new KoreanCarFactory("KOREA");
   const usaCarFacotry = new USACarFactory("USA");
   console.log(
+    // 팩토리 그룹별 객체 2개씩 생성
     koreaCarFacotry.createEngine(10),
     koreaCarFacotry.createTire(5),
     usaCarFacotry.createEngine(8),

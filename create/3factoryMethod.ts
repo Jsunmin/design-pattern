@@ -80,8 +80,8 @@
   /**
    *  팩토리 메서드 패턴
    * 팩토리패턴 + 추상화
-   * 단순히 생성을 맡는 다른 클래스를 통해, 생성로직을 분리/캡슐화한 팩토리 메서드와 달리
-   *  캡슐화된 객체(상위 클래스)에 하위 클래스를 추가
+   * 단순히 생성을 맡는 다른 클래스를 통해, 생성로직을 분리/캡슐화한 팩토리패턴과 달리
+   *  캡슐화된 추상화 객체(상위 클래스)에 구현을 위한 하위 클래스를 추가
    *  하위 클래스는 상속을 받아 구현(실체화) ~ (+ 각 클래스에 맞춰 다형성 유지도 가능)
    *  실체회된 클래스의 객체(factory)로 다른 객체 생성
    *
@@ -140,7 +140,7 @@
   class NosqlFactoryFromAbs extends AbsDbFactory {
     // 실제 생성 메서드의 구현2
     getCustomInstance(type: string, host: string) {
-      console.log("args from sql", arguments);
+      console.log("args from nosql", arguments);
       if (type === "MONGO") {
         return new MongoClient(host);
       } else if (type === "REDIS") {

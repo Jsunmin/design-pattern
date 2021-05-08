@@ -53,7 +53,7 @@
   DummyMaker.prototype.sayMyName = function () {
     return this.age;
   };
-  // 연관된 하위 객체들 전부 값 바뀜 ~ JS는 원본 프로토타입 메서드 참조하는 식으로 클래스&인스턴스 만들어지니까?!!
+  // 연관된 하위 객체들 전부 값 바뀜 ~ JS는 원본 프로토타입 메서드 참조하는 식으로 클래스&인스턴스 만들어지니까 뭐?!!
   console.log("dummy1", dummy1, dummy1.sayMyName());
   console.log("dummy4", dummy4, dummy4.sayMyName());
 }

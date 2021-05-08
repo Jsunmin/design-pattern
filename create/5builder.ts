@@ -3,7 +3,7 @@
 
   /**
    *  복합 객체
-   * 둘 이상의 클래스로부터 의존관계를 갖는 객체(클래스)
+   * 둘 이상의 객체(클래스)로부터 의존관계를 갖는 객체(클래스)
    *  ~ 내부에서 객체를 생성&결합 | DI를 통해 받은 객체 결합
    *  -> 디자인패턴에서는 DI를 통한 복합객체의 구성이 권장됨
    *
@@ -16,8 +16,9 @@
   abstract class AbsBuilder {
     protected algorithm: any;
 
-    setAlgorithm() {
+    setAlgorithm(algorithm: any) {
       console.log("알고리즘 저장");
+      this.algorithm = algorithm;
     }
     getInstance() {
       return this.algorithm.getResult();
@@ -45,7 +46,7 @@
       super();
       // 알고리즘 클래스를 DI로 받아옴
       if (algorithm) {
-        this.algorithm = algorithm;
+        this.setAlgorithm(algorithm);
       }
     }
 
