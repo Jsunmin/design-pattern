@@ -42,9 +42,10 @@
     constructor() {
       super();
       this.setPaymentServiceName('NICE_PAY');
-      console.log('나이스페이 모듈 init');
+      console.log('** 나이스페이 모듈 init **');
     }
     requestPayment(amount: number) {
+      this.abc();
       console.log(`결제 요청중.. : ${amount} for ${this.getPaymentServiceName()}`)
       const result = { code: 200, paymentId: `NP${Math.floor(Math.random() * 10000)}` };
       if (result.code === 200) {
@@ -53,14 +54,20 @@
       }
       return false;
     }
+    abc() {
+      console.log(' NICE 추가 작업A');
+      console.log(' NICE 추가 작업B');
+      console.log(' NICE 추가 작업1');
+    }
   }
   class ZeroPay extends FlyWeightPaymentRequestModule {
     constructor() {
       super();
       this.setPaymentServiceName('ZERO_PAY');
-      console.log('제로페이 모듈 init');
+      console.log('** 제로페이 모듈 init **');
     }
     requestPayment(amount: number) {
+      this.bcd();
       console.log(`결제 요청중.. : ${amount} for ${this.getPaymentServiceName()}`)
       const result = { code: 200, paymentId: `ZP${Math.floor(Math.random() * 10000)}` };
       if (result.code === 200) {
@@ -69,14 +76,18 @@
       }
       return false;
     }
+    bcd() {
+      console.log(' ZERO 추가 작업1');
+    }
   }
   class UniPay extends FlyWeightPaymentRequestModule {
     constructor() {
       super();
       this.setPaymentServiceName('UNI_PAY');
-      console.log('유니페이 모듈 init');
+      console.log('** 유니페이 모듈 init **');
     }
     requestPayment(amount: number) {
+      this.cde();
       console.log(`결제 요청중.. : ${amount} for ${this.getPaymentServiceName()}`)
       const result = { code: 200, paymentId: `UP${Math.floor(Math.random() * 10000)}` };
       if (result.code === 200) {
@@ -84,6 +95,10 @@
         return true;
       }
       return false;
+    }
+    cde() {
+      console.log(' UNI 추가 작업1');
+      console.log(' UNI 추가 작업2');
     }
   }
   // 공유 객체를 생성 및 관리하는 팩토리
