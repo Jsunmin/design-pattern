@@ -57,3 +57,5 @@
   console.log("dummy1", dummy1, dummy1.sayMyName());
   console.log("dummy4", dummy4, dummy4.sayMyName());
 }
+
+// 중간단계까지 클래스 (상속)을 통해 프로토타입으로 만들고, 세부사항을 카피(클론)을 통해 만드는 방식

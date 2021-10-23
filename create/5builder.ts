@@ -14,7 +14,7 @@
    */
 
   abstract class AbsBuilder {
-    protected algorithm: any;
+    protected algorithm: AbsAlgorithm;
 
     setAlgorithm(algorithm: any) {
       console.log("알고리즘 저장");
@@ -86,7 +86,7 @@
   const specificBuildLogic = new Algorithm();
   // 빌드로직을 빌더에 DI
   const specificBuilder = new Builder(specificBuildLogic);
-  // 빌더로 클래스 생성
+  // 빌더로 클래스 생성 ~ 빌드의 구체적 내용은 구체화한 알고리즘에 담겨 있다!
   const buildedClass = specificBuilder.build(
     ["a", "b"],
     ["c", 1],

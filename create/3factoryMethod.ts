@@ -120,7 +120,7 @@
       }
       return this.getCustomInstance(type, host, ...args);
     }
-    // 하위 클래스는 이를 커스텀 구체화 시킨다!
+    // 하위 클래스는 이를 커스텀 구체화 시킨다! ~ 실제 객체를 만드는 팩토리 메서드의 추상화!
     abstract getCustomInstance(...args: any[]): any;
   }
 
@@ -130,6 +130,9 @@
     // 실제 생성 메서드의 구현1
     getCustomInstance(type: string, host: string) {
       console.log("args from sql", arguments);
+
+      // ... sql만을 위한 세부 사항을 추가할 수 있다!!
+
       if (type === "MYSQL") {
         return new MysqlClient(host);
       } else if (type === "MARIA") {
@@ -141,6 +144,9 @@
     // 실제 생성 메서드의 구현2
     getCustomInstance(type: string, host: string) {
       console.log("args from nosql", arguments);
+
+      // ... nosql만을 위한 세부 사항을 추가할 수 있다!!
+
       if (type === "MONGO") {
         return new MongoClient(host);
       } else if (type === "REDIS") {
@@ -148,6 +154,7 @@
       }
     }
   }
+  // abstract factory로부터 구체화(세분화) & 커스텀한 별개의 팩토리 인스턴스 생성!
   const [sqlFactory, nosqlFactory] = [
     new SqlFactoryFromAbs(),
     new NosqlFactoryFromAbs(),

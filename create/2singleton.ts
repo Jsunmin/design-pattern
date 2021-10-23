@@ -41,7 +41,7 @@
     }
   }
   const host = "aaabbbccc";
-  // 여러 객체 요청에도 딱 하나의 생성된 객체만 반환함
+  // 여러 객체 요청에도 딱 하나의 생성된 객체만 반환함 (상태값 유지(공유!))
   Mysql.getInstance(host).isConnect();
   Mysql.getInstance(host).isConnect();
   Mysql.getInstance(host).isConnect();
